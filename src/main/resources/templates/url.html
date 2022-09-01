@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--/*/ <th:block th:include="fragments/general.html :: headerfiles">
+        </th:block> /*/-->
+</head>
+<body>
+<div th:insert="fragments/general.html :: nav"></div>
+<main role="main">
+    <div class="container">
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Shortened URL</th>
+                    <th scope="col">Original URL</th>
+                    <th scope="col">Click Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a th:href="@{{base}/{hash}(base=${baseUrl},hash=${url.getHash()})}" th:text="@{{base}/{hash}(base=${baseUrl},hash=${url.getHash()})}"></a></td>
+                    <td th:text="${url.getOriginalURL()}">1</td>
+                    <td th:text="${url.getClickCount()}">1</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

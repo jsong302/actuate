@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--/*/ <th:block th:include="fragments/general.html :: headerfiles">
+        </th:block> /*/-->
+    <script>
+        console.log("${error}");
+    </script>
+</head>
+<body>
+<div th:insert="fragments/general.html :: nav"></div>
+<main role="main">
+    <div><p>URL is not found</p></div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--/*/ <th:block th:include="fragments/general.html :: headerfiles">
+        </th:block> /*/-->
+</head>
+<body>
+<div th:insert="fragments/general.html :: nav"></div>
+
+<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Actuate URL</h1>
+            <div class="form-outline">
+                <form action="#" th:action="@{/url}" th:object="${url}" method="post">
+                    <input type="text" class="form-control" th:field="*{originalURL}" placeholder="https://www.example.com"/>
+                    <br>
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Shortened URL</th>
+                    <th scope="col">Original URL</th>
+                    <th scope="col">Click Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="url : ${urls}">
+                    <td><a th:href="@{{base}/{hash}(base=${baseUrl},hash=${url.getHash()})}" th:text="@{{base}/{hash}(base=${baseUrl},hash=${url.getHash()})}"></a></td>
+                    <td th:text="${url.getOriginalURL()}">1</td>
+                    <td th:text="${url.getClickCount()}">1</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
